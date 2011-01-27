@@ -22,7 +22,7 @@ class Statuses extends MY_Controller {
 			$d->text = $r->text;
 			$d->created_at = $r->created_at;
 			$d->source = strip_tags($r->source);
-			$d->id = sprintf("%d",$r->id);
+			$d->id = sprintf("%.0f",$r->id);
 			$d->user = new stdClass();
 			$d->user->statuses_count = $r->user->statuses_count;
 			$d->user->screen_name = $r->user->screen_name;
