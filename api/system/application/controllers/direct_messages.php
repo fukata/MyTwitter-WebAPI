@@ -56,5 +56,15 @@ class Direct_messages extends MY_Controller {
 		$res = $this->twitter->direct_messages_new($params);
 		$this->response($res);
 	}
+	
+	public function destroy_post() {
+		$id = $this->input->post('id');
+		if ($id==false && mb_strlen($id)==0) {
+			$this->response(array());
+			return;
+		}
+		$res = $this->twitter->direct_messages_destroy($id);
+		$this->response($res);
+	}
 }
 ?>

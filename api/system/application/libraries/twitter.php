@@ -79,6 +79,11 @@ class twitter {
 		$url = $this->apiUrl.'statuses/retweet/'.$id.$this->apiFormat;
 		return $this->post($url, $params);
 	}
+	
+	public function statuses_destroy($id, $params=array()) {
+		$url = $this->apiUrl.'statuses/destroy/'.$id.$this->apiFormat;
+		return $this->post($url, $params);
+	}
 
 	// ==========================================================================
 	// direct_messages
@@ -96,6 +101,11 @@ class twitter {
 
 	public function direct_messages_new($params=array()) {
 		$url = $this->apiUrl.'direct_messages/new'.$this->apiFormat;
+		return $this->post($url, $params);
+	}
+
+	public function direct_messages_destroy($id,$params=array()) {
+		$url = $this->apiUrl.'direct_messages/destroy/'.$id.$this->apiFormat;
 		return $this->post($url, $params);
 	}
 
