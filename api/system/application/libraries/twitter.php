@@ -55,6 +55,10 @@ class twitter {
 		// x_auth_expires
 		return $accessTokenInfo;
 	}
+
+	// ==========================================================================
+	// statuses
+	// ==========================================================================
 	
 	public function statuses_home_timeline($params=array()) {
 		$url = $this->apiUrl.'statuses/home_timeline'.$this->apiFormat;
@@ -63,11 +67,6 @@ class twitter {
 	
 	public function statuses_mentions($params=array()) {
 		$url = $this->apiUrl.'statuses/mentions'.$this->apiFormat;
-		return $this->get($url, $params);
-	}
-
-	public function direct_messages($params=array()) {
-		$url = $this->apiUrl.'direct_messages'.$this->apiFormat;
 		return $this->get($url, $params);
 	}
 
@@ -80,7 +79,30 @@ class twitter {
 		$url = $this->apiUrl.'statuses/retweet/'.$id.$this->apiFormat;
 		return $this->post($url, $params);
 	}
+
+	// ==========================================================================
+	// direct_messages
+	// ==========================================================================
 	
+	public function direct_messages($params=array()) {
+		$url = $this->apiUrl.'direct_messages'.$this->apiFormat;
+		return $this->get($url, $params);
+	}
+
+	public function direct_messages_sent($params=array()) {
+		$url = $this->apiUrl.'direct_messages/sent'.$this->apiFormat;
+		return $this->get($url, $params);
+	}
+
+	public function direct_messages_new($params=array()) {
+		$url = $this->apiUrl.'direct_messages/new'.$this->apiFormat;
+		return $this->post($url, $params);
+	}
+
+	// ==========================================================================
+	// base
+	// ==========================================================================
+
 	private function get($url, $params) {
 		if (!empty($params) && is_array($params)) {
 			$url .= '?'.http_build_query($params);
