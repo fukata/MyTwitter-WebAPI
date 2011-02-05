@@ -22,7 +22,7 @@ class Statuses extends MY_Controller {
 			$d->text = $r->text;
 			$d->created_at = $r->created_at;
 			$d->source = strip_tags($r->source);
-			$d->id = sprintf("%.0f",$r->id);
+			$d->id = $r->id_str;
 			$d->user = new stdClass();
 			$d->user->statuses_count = $r->user->statuses_count;
 			$d->user->screen_name = $r->user->screen_name;
@@ -37,7 +37,7 @@ class Statuses extends MY_Controller {
 			$d->user->location = $r->user->location;
 			$d->user->name = $r->user->name;
 			$d->user->profile_image_url = $r->user->profile_image_url;
-			$d->user->id = $r->user->id;
+			$d->user->id = $r->user->id_str;
 			$d->user->utc_offset = $r->user->utc_offset;
 			$data[] = $d;
 		}
@@ -46,8 +46,25 @@ class Statuses extends MY_Controller {
 	}
 	public function mentions_get() {
 		$params = array();
+		if ($this->input->get('max_id')!==false) $params['max_id'] = $this->input->get('max_id');
+		if ($this->input->get('since_id')!==false) $params['since_id'] = $this->input->get('since_id');
 		$res = $this->twitter->statuses_mentions($params);
-		$this->response($res);
+		
+		$data = array();
+		foreach ($res as $r) {
+			$d = new stdClass();
+			$d->text = $r->text;
+			$d->created_at = $r->created_at;
+			$d->source = strip_tags($r->source);
+			$d->id = $r->id_str;
+			$d->in_reply_to_status_id = $r->in_reply_to_status_id;
+			$d->in_reply_to_user_id = $r->in_reply_to_user_id;
+			$d->favorited = $r->favorited;
+			$d->in_reply_to_screen_name = $r->in_reply_to_screen_name;
+			$data[] = $d;
+		}
+		
+		$this->response($data);
 	}
 	public function update_post() {
 		$status = $this->input->post('status');
@@ -67,8 +84,7 @@ class Statuses extends MY_Controller {
 			$this->response(array());
 			return;
 		}
-		$params = array(
-		);
+		$params = array();
 		$res = $this->twitter->statuses_retweet($id, $params);
 		$this->response($res);
 	}
