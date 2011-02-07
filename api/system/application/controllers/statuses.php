@@ -61,6 +61,9 @@ class Statuses extends MY_Controller {
 			$d->in_reply_to_user_id = $r->in_reply_to_user_id;
 			$d->favorited = $r->favorited;
 			$d->in_reply_to_screen_name = $r->in_reply_to_screen_name;
+			$d->user = new stdClass();
+			$d->user->id = $r->user->id_str;
+			$d->user->screen_name = $r->user->screen_name;
 			$data[] = $d;
 		}
 		
