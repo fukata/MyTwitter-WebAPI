@@ -28,7 +28,7 @@ class Favorites extends MY_Controller {
 			return;
 		}
 		$params = array();
-		$res = $this->twitter->favorites_create($id, $params);
+		$res = $this->twitter->favorites_destroy($id, $params);
 		$this->response($res);
 	}
 }
