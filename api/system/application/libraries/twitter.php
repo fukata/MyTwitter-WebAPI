@@ -117,6 +117,11 @@ class twitter {
 		$url = $this->apiUrl.'favorites/create/'.$id.$this->apiFormat;
 		return $this->post($url, $params);
 	}
+	
+	public function favorites_destroy($id, $params=array()) {
+		$url = $this->apiUrl.'favorites/destroy/'.$id.$this->apiFormat;
+		return $this->post($url, $params);
+	}
 
 	// ==========================================================================
 	// base
