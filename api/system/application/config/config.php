@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://example.com/";
+$config['base_url']	= "http://mytwitterapi.org/";
 
 /*
 |--------------------------------------------------------------------------
@@ -332,11 +332,11 @@ $config['proxy_ips'] = '';
 | Edit your twitter oauth information.
 |
 */
-$config['screen_name'] = '';
-$config['consumer_key'] = '';
-$config['consumer_secret'] = '';
-$config['oauth_token'] = '';
-$config['oauth_token_secret'] = '';
+$config['screen_name'] = 'fukata';
+$config['consumer_key'] = '3s5WJN9iLe9APsiiCUq6nw';
+$config['consumer_secret'] = 'eNreh0fLhYkuIEjeZN7wWSS2WJMaF3VLgR6YZyK3Yiw';
+$config['oauth_token'] = '37229267-W2CwbpaaLrUIZoBDObzZ5s2YZ4ZfGiu7DWQYpOEmI';
+$config['oauth_token_secret'] = 'xvrAyTd9pmMqfxEocLOOfIIWhTWZ5f3f0pwdIUeDU';
 
 
 /* End of file config.php */
