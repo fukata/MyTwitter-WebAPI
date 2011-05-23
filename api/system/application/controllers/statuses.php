@@ -14,6 +14,7 @@ class Statuses extends MY_Controller {
 		$params = array();
 		if ($this->input->get('max_id')!==false) $params['max_id'] = $this->input->get('max_id');
 		if ($this->input->get('since_id')!==false) $params['since_id'] = $this->input->get('since_id');
+		if ($this->input->get('count')!==false) $params['count'] = $this->input->get('count');
 		$res = $this->twitter->statuses_home_timeline($params);
 		
 		$data = array();
@@ -48,6 +49,7 @@ class Statuses extends MY_Controller {
 		$params = array();
 		if ($this->input->get('max_id')!==false) $params['max_id'] = $this->input->get('max_id');
 		if ($this->input->get('since_id')!==false) $params['since_id'] = $this->input->get('since_id');
+		if ($this->input->get('count')!==false) $params['count'] = $this->input->get('count');
 		$res = $this->twitter->statuses_mentions($params);
 		
 		$data = array();
