@@ -107,5 +107,39 @@ class Statuses extends MY_Controller {
 		$res = $this->twitter->statuses_destroy($id, $params);
 		$this->response($res);
 	}
+
+	public function show_get() {
+		$params = array();
+		$statusId = $this->input->get('id');
+		$r = $this->twitter->show($statusId);
+		
+		$d = new stdClass();
+		$d->text = $r->text;
+		$d->created_at = $r->created_at;
+		$d->source = strip_tags($r->source);
+		$d->id = $r->id_str;
+		$d->in_reply_to_status_id = $r->in_reply_to_status_id_str;
+		$d->in_reply_to_user_id = $r->in_reply_to_user_id_str;
+		$d->favorited = $r->favorited;
+		$d->in_reply_to_screen_name = $r->in_reply_to_screen_name;
+		$d->user = new stdClass();
+		$d->user->statuses_count = $r->user->statuses_count;
+		$d->user->screen_name = $r->user->screen_name;
+		$d->user->lang = $r->user->lang;
+		$d->user->created_at = $r->user->created_at;
+		$d->user->description = $r->user->description;
+		$d->user->followers_count = $r->user->followers_count;
+		$d->user->friends_count = $r->user->friends_count;
+		$d->user->following = $r->user->following;
+		$d->user->url = $r->user->url;
+		$d->user->time_zone = $r->user->time_zone;
+		$d->user->location = $r->user->location;
+		$d->user->name = $r->user->name;
+		$d->user->profile_image_url = $r->user->profile_image_url;
+		$d->user->id = $r->user->id_str;
+		$d->user->utc_offset = $r->user->utc_offset;
+		
+		$this->response($d);
+	}
 }
 ?>
