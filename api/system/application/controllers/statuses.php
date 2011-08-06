@@ -24,6 +24,10 @@ class Statuses extends MY_Controller {
 			$d->created_at = $r->created_at;
 			$d->source = strip_tags($r->source);
 			$d->id = $r->id_str;
+			$d->in_reply_to_status_id = $r->in_reply_to_status_id_str;
+			$d->in_reply_to_user_id = $r->in_reply_to_user_id_str;
+			$d->favorited = $r->favorited;
+			$d->in_reply_to_screen_name = $r->in_reply_to_screen_name;
 			$d->user = new stdClass();
 			$d->user->statuses_count = $r->user->statuses_count;
 			$d->user->screen_name = $r->user->screen_name;
@@ -59,8 +63,8 @@ class Statuses extends MY_Controller {
 			$d->created_at = $r->created_at;
 			$d->source = strip_tags($r->source);
 			$d->id = $r->id_str;
-			$d->in_reply_to_status_id = $r->in_reply_to_status_id;
-			$d->in_reply_to_user_id = $r->in_reply_to_user_id;
+			$d->in_reply_to_status_id = $r->in_reply_to_status_id_str;
+			$d->in_reply_to_user_id = $r->in_reply_to_user_id_str;
 			$d->favorited = $r->favorited;
 			$d->in_reply_to_screen_name = $r->in_reply_to_screen_name;
 			$d->user = new stdClass();
