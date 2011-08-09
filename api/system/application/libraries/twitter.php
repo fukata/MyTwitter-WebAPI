@@ -85,6 +85,11 @@ class twitter {
 		return $this->post($url, $params);
 	}
 
+	public function show($statusId, $params=array()) {
+		$url = $this->apiUrl.'statuses/show/' . $statusId . $this->apiFormat;
+		return $this->get($url, $params);
+	}
+	
 	// ==========================================================================
 	// direct_messages
 	// ==========================================================================
